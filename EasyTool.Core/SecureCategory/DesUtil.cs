@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EasyTool.CodeCategory
+namespace EasyTool
 {
     /// <summary>
     /// DES工具类
@@ -78,7 +76,7 @@ namespace EasyTool.CodeCategory
         /// <param name="encoding">默认UTF8</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string Encrypt(string str, string sk,string iv, CipherMode cipher = CipherMode.ECB, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
+        public static string Encrypt(string str, string sk, string iv, CipherMode cipher = CipherMode.ECB, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
         {
             if (string.IsNullOrWhiteSpace(str)) return string.Empty;
             if (!IsLegalSize(sk)) throw new ArgumentException("不合规的秘钥，请确认秘钥为8位的字符");

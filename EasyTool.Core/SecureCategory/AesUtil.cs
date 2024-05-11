@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace EasyTool.CodeCategory
+namespace EasyTool
 {
     public static class AesUtil
     {
@@ -96,13 +92,13 @@ namespace EasyTool.CodeCategory
         /// <param name="encoding">默认UTF8</param>
         /// <returns>加密后的结果</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string Encrypt(string text, string key, string iv ,CipherMode cipher = CipherMode.CBC, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
+        public static string Encrypt(string text, string key, string iv, CipherMode cipher = CipherMode.CBC, PaddingMode padding = PaddingMode.PKCS7, Encoding? encoding = null)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty; ;
-            if (!KeyIsLegalSize(key)) 
+            if (!KeyIsLegalSize(key))
                 throw new ArgumentException("不合规的秘钥，请确认秘钥为16 、24、 32位的字符");
-            if (!IvIsLegalSize(iv)) 
+            if (!IvIsLegalSize(iv))
                 throw new ArgumentException("不合规的iv，请确认iv为16位的字符");
             encoding ??= Encoding.UTF8;
 
